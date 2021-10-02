@@ -1,6 +1,20 @@
+import { useEffect, useState } from 'react';
+import api from '../services/charactersApi';
 import '../styles/App.scss';
 
 function App() {
+  /*Variables*/
+  const [data, setData] = useState([]);
+  /*Funciones*/
+
+  /*Fetch*/
+  useEffect(() => {
+    api.getCharacters().then((incomingData) => {
+      console.log(incomingData);
+      setData(incomingData);
+    });
+  }, []);
+
   return (
     <>
       <header className='header'>
@@ -12,8 +26,12 @@ function App() {
       </header>
       <main className='main'>
         <form className='main__form'>
-          <input type='text' placeholder='Buscar' class='main__form--text' />
-          <button class='main__form--search' type='button'>
+          <input
+            type='text'
+            placeholder='Buscar'
+            className='main__form--text'
+          />
+          <button className='main__form--search' type='button'>
             Search
           </button>
           <select name='select' className='main__form--select'>
@@ -22,11 +40,20 @@ function App() {
             <option value=''>Estatus</option>
           </select>
         </form>
-        <form>
-          <ul>
-            <li>
-              <h2></h2>
-              <h3></h3>
+        <form className='main__form2 form2'>
+          <ul className='main__form2--list list'>
+            <li className='main__form2--list--item item'>
+              <img src='' alt='personaje' />
+              <h2
+                className='main__form2--list--item--name name'
+                alt='nombre'
+                title='nombre'
+              ></h2>
+              <h3
+                className='main__form2--list--item--species species'
+                alt='especie'
+                title='especie'
+              ></h3>
             </li>
           </ul>
         </form>
