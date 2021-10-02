@@ -2,109 +2,69 @@
   text-decoration: none;
   list-style-type: none;
 }
+#root {
+  width: 100%;
+  height: 100%;
+}
 body {
-  background-image: url(../img/1023624.jpg);
+  background-color: black;
   background-position: center;
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
+  margin: 0;
   width: 100vw;
   height: 100vh;
-  margin: 0;
+}
+.header {
+  width: 100%;
+  height: 20vh;
+  &__img {
+    width: 300px;
+    height: 100px;
+    margin: 30px;
+  }
 }
 .main {
+  width: 100%;
+  height: 70vh;
   &__form {
-    &--container {
-      &--search {
-        font-family: inherit;
-        line-height: inherit;
-        color: #000000;
-        min-width: 12em;
-        border: none;
-        border-style: none;
-      }
-
-      ::placeholder {
-        color: #15ff00;
-      }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    &--text {
+      background-color: #000000;
+      padding: 3px;
+      border: 1px solid #15ff00;
+    }
+    &--search {
+      padding: 3px;
+      color: #00afc7;
+      background-color: #000000;
+      min-width: 5em;
+      border: 1px solid #15ff00;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    &--select {
+      background-color: black;
+      color: #00afc7;
+      border: 1px solid #15ff00;
+      padding: 2px;
+    }
+    ::placeholder {
+      color: #00afc7;
     }
   }
 }
-.glow-on-hover {
-  width: 100;
-  height: 25px;
-  border: none;
-  outline: none;
-  color: #000000;
-  background: #15ff00;
-
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-}
-
-.glow-on-hover:before {
-  content: '';
-  background: linear-gradient(
-    45deg,
-    #309b3b,
-    #41bf48,
-    #52f871,
-    #94f658,
-    #b5f54b,
-    #d6f43e,
-    #b5f54b,
-    #94f658,
-    #52f871,
-    #41bf48,
-    #309b3b
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-.glow-on-hover:active {
-  color: #000000;
-}
-
-.glow-on-hover:active:after {
-  background: transparent;
-}
-
-.glow-on-hover:hover:before {
-  opacity: 1;
-}
-
-.glow-on-hover:after {
-  z-index: -1;
-  content: '';
-  position: absolute;
+.footer {
   width: 100%;
-  height: 100%;
-  background: #15ff00;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
-
-@keyframes glowing {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 400% 0;
-  }
-  100% {
-    background-position: 0 0;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  &__small {
+    color: #15ff00;
   }
 }
