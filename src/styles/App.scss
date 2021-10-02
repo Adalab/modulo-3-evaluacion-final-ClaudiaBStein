@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+* {
+  text-decoration: none;
+  list-style-type: none;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-image: url(../img/1023624.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
+.main {
+  &__form {
+    &--container {
+      &--search {
+        font-family: inherit;
+        line-height: inherit;
+        color: #000000;
+        min-width: 12em;
+        border: none;
+        border-style: none;
+      }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+      ::placeholder {
+        color: #15ff00;
+      }
+    }
   }
 }
+.glow-on-hover {
+  width: 100;
+  height: 25px;
+  border: none;
+  outline: none;
+  color: #000000;
+  background: #15ff00;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(
+    45deg,
+    #309b3b,
+    #41bf48,
+    #52f871,
+    #94f658,
+    #b5f54b,
+    #d6f43e,
+    #b5f54b,
+    #94f658,
+    #52f871,
+    #41bf48,
+    #309b3b
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.glow-on-hover:active {
+  color: #000000;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #15ff00;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
   }
 }
