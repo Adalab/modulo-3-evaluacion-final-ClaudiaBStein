@@ -6,14 +6,30 @@ import CharactersList from './CharactersList';
 function App() {
   /*Variables*/
   const [data, setData] = useState([]);
-  /*Funciones*/
-
+  const [searchName, setSearchName] = useState('');
+  const [filterSpecies, setFilterSpecies] = useState('');
   /*Fetch*/
   useEffect(() => {
     api.getCharacters().then((incomingData) => {
       setData(incomingData);
     });
   }, []);
+
+  /*Funciones*/
+  const handleSearchName = (ev) => {
+    setSearchName(ev.currentTarget.value);
+  };
+
+  const handleFilterSpecies = (ev) => {
+    setFilterSpecies(ev.currentTarget.value);
+  };
+  const filteredData = data
+    .filter((character) => character.species === filterSpecies)
+    .filter((character) =>
+      character.name
+        .toLocaleLowerCase()
+        .includes(searchName.toLocaleLowerCase())
+    );
 
   return (
     <>
@@ -31,6 +47,8 @@ function App() {
               type='text'
               placeholder='Buscar'
               className='main__form--container--text'
+              value={searchName}
+              onChange={handleSearchName}
             />
             <button className='main__form--container--search' type='button'>
               Search
@@ -38,29 +56,34 @@ function App() {
             <label className='main__form--container--label'>
               Filtra por especie
             </label>
-            <select name='select' className='main__form--container--select'>
+            <select
+              name='select'
+              className='main__form--container--select'
+              value={filterSpecies}
+              onChange={handleFilterSpecies}
+            >
               <option
                 className='main__form--container--select--option'
-                value=''
+                value='-'
               >
                 -
               </option>
               <option
                 className='main__form--container--select--option'
-                value=''
+                value='Humana'
               >
                 Humana
               </option>
               <option
                 className='main__form--container--select--option'
-                value=''
+                value='Alien'
               >
                 Alien
               </option>
             </select>
           </div>
           <section className='main__form--section'>
-            <CharactersList data={data} />
+            <CharactersList data={filteredData} />
           </section>
         </form>
       </main>
