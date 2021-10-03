@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/charactersApi';
 import '../styles/App.scss';
+import CharactersList from './CharactersList';
 
 function App() {
   /*Variables*/
@@ -26,36 +27,39 @@ function App() {
       </header>
       <main className='main'>
         <form className='main__form'>
-          <input
-            type='text'
-            placeholder='Buscar'
-            className='main__form--text'
-          />
-          <button className='main__form--search' type='button'>
-            Search
-          </button>
-          <select name='select' className='main__form--select'>
-            <option value=''>Especie</option>
-            <option value=''>Origen</option>
-            <option value=''>Estatus</option>
-          </select>
-        </form>
-        <form className='main__form2 form2'>
-          <ul className='main__form2--list list'>
-            <li className='main__form2--list--item item'>
-              <img src='' alt='personaje' />
-              <h2
-                className='main__form2--list--item--name name'
-                alt='nombre'
-                title='nombre'
-              ></h2>
-              <h3
-                className='main__form2--list--item--species species'
-                alt='especie'
-                title='especie'
-              ></h3>
-            </li>
-          </ul>
+          <div className='main__form--container'>
+            <input
+              type='text'
+              placeholder='Buscar'
+              className='main__form--container--text'
+            />
+            <button className='main__form--container--search' type='button'>
+              Search
+            </button>
+            <select name='select' className='main__form--container--select'>
+              <option
+                className='main__form--container--select--option'
+                value=''
+              >
+                Especie
+              </option>
+              <option
+                className='main__form--container--select--option'
+                value=''
+              >
+                Origen
+              </option>
+              <option
+                className='main__form--container--select--option'
+                value=''
+              >
+                Estatus
+              </option>
+            </select>
+          </div>
+          <section className='main__form--section'>
+            <CharactersList data={data} />
+          </section>
         </form>
       </main>
       <footer className='footer'>
