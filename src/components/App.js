@@ -11,7 +11,6 @@ function App() {
   /*Fetch*/
   useEffect(() => {
     api.getCharacters().then((incomingData) => {
-      console.log(incomingData);
       setData(incomingData);
     });
   }, []);
@@ -36,24 +35,27 @@ function App() {
             <button className='main__form--container--search' type='button'>
               Search
             </button>
+            <label className='main__form--container--label'>
+              Filtra por especie
+            </label>
             <select name='select' className='main__form--container--select'>
               <option
                 className='main__form--container--select--option'
                 value=''
               >
-                Especie
+                -
               </option>
               <option
                 className='main__form--container--select--option'
                 value=''
               >
-                Origen
+                Humana
               </option>
               <option
                 className='main__form--container--select--option'
                 value=''
               >
-                Estatus
+                Alien
               </option>
             </select>
           </div>

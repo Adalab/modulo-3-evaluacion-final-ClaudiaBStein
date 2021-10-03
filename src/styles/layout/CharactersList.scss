@@ -1,0 +1,31 @@
+.main {
+  &__form {
+    &--section {
+      &--list {
+        padding-right: 38px;
+        &--item {
+          width: 180px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: #43a0df;
+          font-size: small;
+          margin: 10px;
+          padding: 10px;
+          font-family: 'Creepster', cursive;
+          letter-spacing: 1px;
+          &--image {
+            height: 150px;
+          }
+          &--name {
+            margin: 5px;
+          }
+          &--species {
+            margin: 5px;
+          }
+        }
+      }
+    }
+  }
+}

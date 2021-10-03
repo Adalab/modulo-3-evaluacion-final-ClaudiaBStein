@@ -1,9 +1,9 @@
+import '../styles/layout/CharactersList.scss';
 const CharacterItem = (props) => {
-  console.log('CharacterItem', props);
   return (
-    <div>
+    <>
       <img
-        src=''
+        src={props.character.image}
         alt='personaje'
         className='main__form--section--list--item--image image'
       />
@@ -11,13 +11,17 @@ const CharacterItem = (props) => {
         className='main__form--section--list--item--name name'
         alt='nombre'
         title='nombre'
-      ></h2>
+      >
+        {props.character.name}
+      </h2>
       <h3
         className='main__form--section--list--item--species species'
         alt='especie'
         title='especie'
-      ></h3>
-    </div>
+      >
+        {props.character.species}
+      </h3>
+    </>
   );
 };
 export default CharacterItem;
