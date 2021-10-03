@@ -48,7 +48,7 @@ function App() {
           <div className='main__form--container'>
             <input
               type='text'
-              placeholder='Buscar'
+              placeholder='Search'
               className='main__form--container--text'
               value={searchName}
               onChange={handleSearchName}
@@ -57,7 +57,7 @@ function App() {
               Search
             </button>
             <label className='main__form--container--label'>
-              Filtra por especie
+              Filter by species:
             </label>
             <select
               name='select'
@@ -75,7 +75,7 @@ function App() {
                 className='main__form--container--select--option'
                 value='Human'
               >
-                Humana
+                Human
               </option>
               <option
                 className='main__form--container--select--option'
