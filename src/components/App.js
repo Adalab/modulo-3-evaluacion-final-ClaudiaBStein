@@ -24,7 +24,10 @@ function App() {
     setFilterSpecies(ev.currentTarget.value);
   };
   const filteredData = data
-    .filter((character) => character.species === filterSpecies)
+    .filter(
+      (character) =>
+        filterSpecies === 'All' || character.species === filterSpecies
+    )
     .filter((character) =>
       character.name
         .toLocaleLowerCase()
@@ -64,13 +67,13 @@ function App() {
             >
               <option
                 className='main__form--container--select--option'
-                value='-'
+                value='All'
               >
-                -
+                All
               </option>
               <option
                 className='main__form--container--select--option'
-                value='Humana'
+                value='Human'
               >
                 Humana
               </option>
