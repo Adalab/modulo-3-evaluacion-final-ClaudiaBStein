@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import api from '../services/charactersApi';
 import CharactersList from './CharactersList';
 import CharactersSearch from './CharactersSearch';
+import Form from './Form';
 
 function App() {
   /*---------Variables---------*/
@@ -14,6 +15,7 @@ function App() {
   useEffect(() => {
     api.getCharacters().then((incomingData) => {
       setData(incomingData);
+      console.log(data);
     });
   }, []);
 
@@ -47,18 +49,15 @@ function App() {
         ></img>
       </header>
       <main className='main'>
-        <form className='main__form'>
-          <CharactersSearch
-            searchName={searchName}
-            handleSearchName={handleSearchName}
-            filterSpecies={filterSpecies}
-            handleFilterSpecies={handleFilterSpecies}
-          />
-
-          <section className='main__form--section'>
-            <CharactersList data={filteredData} />
-          </section>
-        </form>
+        <Form
+          searchName={searchName}
+          handleSearchName={handleSearchName}
+          filterSpecies={filterSpecies}
+          handleFilterSpecies={handleFilterSpecies}
+          CharactersList={CharactersList}
+          CharactersSearch={CharactersSearch}
+          data={filteredData}
+        />
       </main>
       <footer className='footer'>
         <small className='footer__small'>
