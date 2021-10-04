@@ -13,6 +13,7 @@ const getCharacters = () => {
           image: character.image,
           status: character.status,
           planet: character.origin.name,
+          episode: character.episode,
         };
       });
     });

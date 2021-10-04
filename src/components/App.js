@@ -1,8 +1,12 @@
 import '../styles/App.scss';
+import '../styles/layout/Footer.scss';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../services/charactersApi';
+import ls from '../services/ls';
 import CharactersList from './CharactersList';
 import CharactersSearch from './CharactersSearch';
+import CharacterDetail from './CharacterDetail';
 import Form from './Form';
 
 function App() {
@@ -10,16 +14,28 @@ function App() {
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [filterSpecies, setFilterSpecies] = useState('All');
+  const routeCharacter = useRouteMatch('/character/:id');
 
   /*---------Fetch---------*/
   useEffect(() => {
-    api.getCharacters().then((incomingData) => {
-      setData(incomingData);
-      console.log(data);
-    });
-  }, []);
+    if (ls.get('characters', []).length > 0) {
+      setData(ls.get('characters', []));
+    } else {
+      api.getCharacters().then((incomingData) => {
+        setData(incomingData);
+        ls.set('characters', incomingData);
+      });
+    }
+  }, [searchName]);
 
   /*---------Funciones---------*/
+
+  const characterId = routeCharacter !== null ? routeCharacter.params.id : '';
+
+  const selectedCharacter = data.find(
+    (character) => character.id === parseInt(characterId)
+  );
+
   const handleSearchName = (ev) => {
     setSearchName(ev.currentTarget.value);
   };
@@ -49,15 +65,30 @@ function App() {
         ></img>
       </header>
       <main className='main'>
-        <Form
-          searchName={searchName}
-          handleSearchName={handleSearchName}
-          filterSpecies={filterSpecies}
-          handleFilterSpecies={handleFilterSpecies}
-          CharactersList={CharactersList}
-          CharactersSearch={CharactersSearch}
-          data={filteredData}
-        />
+        <Switch />
+
+        <Route path='/character/:id'>
+          <section>
+            <CharacterDetail character={selectedCharacter} />
+          </section>
+        </Route>
+        <Route exact path='/'>
+          <Form
+            searchName={searchName}
+            handleSearchName={handleSearchName}
+            filterSpecies={filterSpecies}
+            handleFilterSpecies={handleFilterSpecies}
+            CharactersList={CharactersList}
+            CharactersSearch={CharactersSearch}
+            data={filteredData}
+          />
+        </Route>
+        <Route>
+          <section>
+            <p>¡Te has equivocado, amiga! Vuelve atrás.</p>
+          </section>
+        </Route>
+        <Switch />
       </main>
       <footer className='footer'>
         <small className='footer__small'>
