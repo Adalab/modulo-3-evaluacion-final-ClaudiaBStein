@@ -1,6 +1,6 @@
 import '../styles/App.scss';
 import '../styles/layout/Footer.scss';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router';
 import { useEffect, useState } from 'react';
 import api from '../services/charactersApi';
 import ls from '../services/ls';
@@ -14,7 +14,7 @@ function App() {
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [filterSpecies, setFilterSpecies] = useState('All');
-  const routeData = useRouteMatch('/character/:id');
+  const routeData = useRouteMatch('/characters/:id');
 
   /*---------Fetch---------*/
   useEffect(() => {
@@ -35,7 +35,7 @@ function App() {
   const selectedCharacter = data.find(
     (character) => character.id === parseInt(characterId)
   );
-
+  console.log(selectedCharacter);
   const handleSearchName = (ev) => {
     setSearchName(ev.currentTarget.value);
   };
@@ -67,7 +67,7 @@ function App() {
       <main className='main'>
         <Switch />
 
-        <Route path='/character/:id'>
+        <Route path='/characters/:id'>
           <section>
             <CharacterDetail character={selectedCharacter} />
           </section>
@@ -82,11 +82,6 @@ function App() {
             CharactersSearch={CharactersSearch}
             data={filteredData}
           />
-        </Route>
-        <Route>
-          <section>
-            <p>¡Te has equivocado, amiga! Vuelve atrás.</p>
-          </section>
         </Route>
         <Switch />
       </main>
