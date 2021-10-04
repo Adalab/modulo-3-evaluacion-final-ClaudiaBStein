@@ -14,7 +14,7 @@ function App() {
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [filterSpecies, setFilterSpecies] = useState('All');
-  const routeCharacter = useRouteMatch('/character/:id');
+  const routeData = useRouteMatch('/character/:id');
 
   /*---------Fetch---------*/
   useEffect(() => {
@@ -30,7 +30,7 @@ function App() {
 
   /*---------Funciones---------*/
 
-  const characterId = routeCharacter !== null ? routeCharacter.params.id : '';
+  const characterId = routeData !== null ? routeData.params.id : '';
 
   const selectedCharacter = data.find(
     (character) => character.id === parseInt(characterId)
@@ -69,7 +69,7 @@ function App() {
 
         <Route path='/character/:id'>
           <section>
-            <CharacterDetail character={selectedCharacter} />
+            <CharacterDetail selectedCharacter={selectedCharacter} />
           </section>
         </Route>
         <Route exact path='/'>

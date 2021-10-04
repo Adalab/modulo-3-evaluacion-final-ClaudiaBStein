@@ -4,7 +4,6 @@ const getCharacters = () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data.results.map((character) => {
         return {
           name: character.name,
