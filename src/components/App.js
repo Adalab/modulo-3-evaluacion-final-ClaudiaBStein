@@ -1,21 +1,23 @@
+import '../styles/App.scss';
 import { useEffect, useState } from 'react';
 import api from '../services/charactersApi';
-import '../styles/App.scss';
 import CharactersList from './CharactersList';
+import CharactersSearch from './CharactersSearch';
 
 function App() {
-  /*Variables*/
+  /*---------Variables---------*/
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState('');
-  const [filterSpecies, setFilterSpecies] = useState('');
-  /*Fetch*/
+  const [filterSpecies, setFilterSpecies] = useState('All');
+
+  /*---------Fetch---------*/
   useEffect(() => {
     api.getCharacters().then((incomingData) => {
       setData(incomingData);
     });
   }, []);
 
-  /*Funciones*/
+  /*---------Funciones---------*/
   const handleSearchName = (ev) => {
     setSearchName(ev.currentTarget.value);
   };
@@ -23,6 +25,7 @@ function App() {
   const handleFilterSpecies = (ev) => {
     setFilterSpecies(ev.currentTarget.value);
   };
+
   const filteredData = data
     .filter(
       (character) =>
@@ -45,46 +48,13 @@ function App() {
       </header>
       <main className='main'>
         <form className='main__form'>
-          <div className='main__form--container'>
-            <input
-              type='text'
-              placeholder='Search'
-              className='main__form--container--text'
-              value={searchName}
-              onChange={handleSearchName}
-            />
-            <button className='main__form--container--search' type='button'>
-              Search
-            </button>
-            <label className='main__form--container--label'>
-              Filter by species:
-            </label>
-            <select
-              name='select'
-              className='main__form--container--select'
-              value={filterSpecies}
-              onChange={handleFilterSpecies}
-            >
-              <option
-                className='main__form--container--select--option'
-                value='All'
-              >
-                All
-              </option>
-              <option
-                className='main__form--container--select--option'
-                value='Human'
-              >
-                Human
-              </option>
-              <option
-                className='main__form--container--select--option'
-                value='Alien'
-              >
-                Alien
-              </option>
-            </select>
-          </div>
+          <CharactersSearch
+            searchName={searchName}
+            handleSearchName={handleSearchName}
+            filterSpecies={filterSpecies}
+            handleFilterSpecies={handleFilterSpecies}
+          />
+
           <section className='main__form--section'>
             <CharactersList data={filteredData} />
           </section>
