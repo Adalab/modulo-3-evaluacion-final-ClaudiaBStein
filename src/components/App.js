@@ -69,7 +69,7 @@ function App() {
 
         <Route path='/character/:id'>
           <section>
-            <CharacterDetail selectedCharacter={selectedCharacter} />
+            <CharacterDetail character={selectedCharacter} />
           </section>
         </Route>
         <Route exact path='/'>

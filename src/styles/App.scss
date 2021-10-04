@@ -120,12 +120,6 @@ body {
         box-shadow: 0px 0px 19px -1px rgba(0, 255, 0, 0.7);
         scrollbar-width: 1px;
         &--item {
-          width: 300px;
-          height: 300px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
           background-image: url(../img/portalrickmorty.gif);
           background-position: center;
           font-size: small;
@@ -142,14 +136,25 @@ body {
           &--name {
             margin: 5px;
             color: black;
+            -webkit-text-stroke: 1px rgb(255, 255, 255);
           }
           &--species {
             margin: 5px;
             color: #000000;
+            -webkit-text-stroke: 1px rgb(255, 255, 255);
           }
         }
       }
     }
   }
 }
-
+.link {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
+  text-decoration: none;
+}
