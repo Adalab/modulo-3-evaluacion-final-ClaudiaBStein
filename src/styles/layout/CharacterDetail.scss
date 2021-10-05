@@ -30,12 +30,14 @@
   }
 }
 .characterNotFound {
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Gemunu Libre', sans-serif;
+  font-family: 'Creepster', cursive;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 1px rgb(255, 255, 255);
   &__strong {
     margin-bottom: 20px;
   }

@@ -7,7 +7,7 @@
   height: 100%;
 }
 body {
-  background-image: url(../img/starsyss.gif);
+  background-image: url(../img/Snake_Planet.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -133,6 +133,7 @@ body {
           -webkit-text-stroke: 1px rgb(255, 255, 255);
           text-decoration: none;
           justify-self: center;
+          padding-top: 20px;
           &--image {
             height: 150px;
             border: #ffffff solid 2px;

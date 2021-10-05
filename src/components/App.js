@@ -2,8 +2,10 @@ import '../styles/App.scss';
 import '../styles/layout/Footer.scss';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../services/charactersApi';
 import ls from '../services/ls';
+import Footer from './Footer';
 import CharactersList from './CharactersList';
 import CharactersSearch from './CharactersSearch';
 import CharacterDetail from './CharacterDetail';
@@ -59,11 +61,14 @@ function App() {
   return (
     <>
       <header className='header'>
-        <img
-          className='header__img'
-          src='https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png'
-          alt='Rick and Morty'
-        ></img>
+        <Link to={`/`}>
+          ;
+          <img
+            className='header__img'
+            src='https://help.redbubble.com/hc/article_attachments/360002309526/Rick_and_Morty_-_logo__English_.png'
+            alt='Rick and Morty'
+          ></img>
+        </Link>
       </header>
       <main className='main'>
         <Switch />
@@ -86,11 +91,7 @@ function App() {
         </Route>
         <Switch />
       </main>
-      <footer className='footer'>
-        <small className='footer__small'>
-          Claudia Stein para Adalab © 2021
-        </small>
-      </footer>
+      <Footer />
     </>
   );
 }
