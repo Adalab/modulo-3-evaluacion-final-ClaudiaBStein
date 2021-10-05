@@ -29,3 +29,21 @@
     justify-content: center;
   }
 }
+.characterNotFound {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Gemunu Libre', sans-serif;
+  &__strong {
+    margin-bottom: 20px;
+  }
+  &__button {
+    background-color: black;
+    border: #15ff00 solid 1px;
+    border-radius: 5px;
+    color: #00afc7;
+    font-family: 'Gemunu Libre', sans-serif;
+  }
+}

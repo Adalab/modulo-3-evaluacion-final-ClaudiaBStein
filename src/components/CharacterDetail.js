@@ -1,8 +1,18 @@
 import '../styles/layout/CharacterDetail.scss';
+import { Link } from 'react-router-dom';
 
 const CharacterDetail = (props) => {
   if (props.character === undefined) {
-    return <p>Personaje no encontrado</p>;
+    return (
+      <p className='characterNotFound'>
+        <h1 className='characterNotFound__title'>¡WUBBA LUBBA DUB DUB!</h1>
+        <h2 className='characterNotFound__text'>CHARACTER NOT FOUND</h2>
+        <strong className='characterNotFound__strong'>*BURP*</strong>
+        <Link to={``}>
+          <button className='characterNotFound__button'>GO BACK</button>
+        </Link>
+      </p>
+    );
   } else {
     return (
       <article className='articleDetail'>
