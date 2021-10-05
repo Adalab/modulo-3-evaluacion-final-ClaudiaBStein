@@ -6,8 +6,8 @@ const Form = (props) => {
       <CharactersSearch
         searchName={props.searchName}
         handleSearchName={props.handleSearchName}
-        filterSpecies={props.filterSpecies}
-        handleFilterSpecies={props.handleFilterSpecies}
+        CharactersSearchpecies={props.CharactersSearchpecies}
+        handleCharactersSearchpecies={props.handleCharactersSearchpecies}
       />
       <section className='main__form--section'>
         <CharactersList data={props.data} />

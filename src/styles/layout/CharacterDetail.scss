@@ -1,0 +1,31 @@
+.sectionDetail {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.articleDetail {
+  margin: 50px;
+  border-radius: 5px;
+  display: flex;
+  padding: 10px;
+  max-width: 500px;
+  max-width: 600px;
+  width: 500px;
+  &__img {
+    height: 250px;
+    border: white;
+    border-radius: 50%;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gemunu Libre', sans-serif;
+    color: #15ff00;
+    font-size: x-large;
+    line-height: 30px;
+    justify-content: center;
+  }
+}

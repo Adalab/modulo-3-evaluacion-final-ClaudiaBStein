@@ -1,30 +1,32 @@
+import '../styles/layout/CharacterDetail.scss';
+
 const CharacterDetail = (props) => {
-  if (props.selectedCharacter === undefined) {
+  if (props.character === undefined) {
     return <p>Personaje no encontrado</p>;
   } else {
     return (
-      <article className='section'>
+      <article className='articleDetail'>
         <img
-          src={props.selectedCharacter.image}
-          alt={`Foto de ${props.selectedCharacter.name}`}
-          title={`Foto de ${props.selectedCharacter.name}`}
-          className='section__img'
+          src={props.character.image}
+          alt={`Foto de ${props.character.name}`}
+          title={`Foto de ${props.character.name}`}
+          className='articleDetail__img'
         ></img>
-        <ul className='section__list'>
-          <li className='section__list--name'>
-            Name: {props.selectedCharacter.name}
+        <ul className='articleDetail__list'>
+          <li className='articleDetail__list--name'>
+            Name: {props.character.name}
           </li>
-          <li className='section__list--item'>
-            Planet: {props.selectedCharacter.origin.name}
+          <li className='articleDetail__list--item'>
+            Planet: {props.character.planet}
           </li>
-          <li className='section__list--item'>
-            Species: {props.selectedCharacter.species}
+          <li className='articleDetail__list--item'>
+            Species: {props.character.species}
           </li>
-          <li className='section__list--item'>
-            Status: {props.selectedCharacter.status}
+          <li className='articleDetail__list--item'>
+            Status: {props.character.status}
           </li>
-          <li className='section__list--item'>
-            Episodes: {props.selectedCharacter.episode.length}
+          <li className='articleDetail__list--item'>
+            Episodes: {props.character.episode.length}
           </li>
         </ul>
       </article>

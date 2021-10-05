@@ -10,12 +10,13 @@ const CharactersSearch = (props) => {
         value={props.searchName}
         onChange={props.handleSearchName}
       />
+
       <label className='main__form--container--label'>Filter by species:</label>
       <select
         name='select'
         className='main__form--container--select'
-        value={props.filterSpecies}
-        onChange={props.handleFilterSpecies}
+        value={props.CharactersSearchpecies}
+        onChange={props.handleCharactersSearchpecies}
       >
         <option className='main__form--container--select--option' value='All'>
           All

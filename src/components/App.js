@@ -13,7 +13,7 @@ function App() {
   /*---------Variables---------*/
   const [data, setData] = useState([]);
   const [searchName, setSearchName] = useState('');
-  const [filterSpecies, setFilterSpecies] = useState('All');
+  const [CharactersSearchpecies, setCharactersSearchpecies] = useState('All');
   const routeData = useRouteMatch('/characters/:id');
 
   /*---------Fetch---------*/
@@ -35,19 +35,20 @@ function App() {
   const selectedCharacter = data.find(
     (character) => character.id === parseInt(characterId)
   );
-  console.log(selectedCharacter);
+
   const handleSearchName = (ev) => {
     setSearchName(ev.currentTarget.value);
   };
-
-  const handleFilterSpecies = (ev) => {
-    setFilterSpecies(ev.currentTarget.value);
+  console.log(selectedCharacter);
+  const handleCharactersSearchpecies = (ev) => {
+    setCharactersSearchpecies(ev.currentTarget.value);
   };
 
   const filteredData = data
     .filter(
       (character) =>
-        filterSpecies === 'All' || character.species === filterSpecies
+        CharactersSearchpecies === 'All' ||
+        character.species === CharactersSearchpecies
     )
     .filter((character) =>
       character.name
@@ -68,7 +69,7 @@ function App() {
         <Switch />
 
         <Route path='/characters/:id'>
-          <section>
+          <section className='sectionDetail'>
             <CharacterDetail character={selectedCharacter} />
           </section>
         </Route>
@@ -76,8 +77,8 @@ function App() {
           <Form
             searchName={searchName}
             handleSearchName={handleSearchName}
-            filterSpecies={filterSpecies}
-            handleFilterSpecies={handleFilterSpecies}
+            CharactersSearchpecies={CharactersSearchpecies}
+            handleCharactersSearchpecies={handleCharactersSearchpecies}
             CharactersList={CharactersList}
             CharactersSearch={CharactersSearch}
             data={filteredData}
